@@ -1,7 +1,7 @@
-const setName = (text)=>{
+const setToggler = (open)=>{
   return{
-    type:"SET_NAME",
-    text:text
+    type:'CHECK',
+    isOpen:open
   }
 }
-export default setName;
+export default setToggler;

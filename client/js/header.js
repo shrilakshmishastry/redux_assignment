@@ -11,15 +11,18 @@ import { Collapse,
   DropdownMenu,
   DropdownItem} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {store} from './store/index.js';
+import setToggler from './actions/index.js';
 
 const  Header = ()=>{
+    console.log(store.getState().isOpen);
   return(
-    <div className="fixed-bottom">
+      <div className="fixed-bottom">
       <Navbar color='light' light expand='md'>
         <NavbarBrand href='/'>ReduxBank
         </NavbarBrand>
-        <NavbarToggler  />
-        <Collapse  navbar>
+        <NavbarToggler onClick={dispatch_toggle}  />
+        <Collapse isOpen={store.getState().isOpen} navbar>
             <Nav className='ml-auto' navbar >
               <NavItem>
                 <Link to='/'>Home
@@ -30,5 +33,10 @@ const  Header = ()=>{
       </Navbar>
     </div>
   );
+}
+
+const dispatch_toggle = (e) =>{
+    const open = !store.getState().isOpen;
+    store.dispatch(setToggler(open));
 }
 export default Header;
