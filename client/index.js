@@ -5,10 +5,10 @@ import App from './js/App.js';
 import {createStore} from 'redux';
 import reducer from './js/reducers/index.js';
 import {Provider} from 'react-redux';
+import {store} from './js/store/index.js';
 
 
-
-ReactDom.render(
+const render =() =>  ReactDom.render(
   (
 
     <BrowserRouter>
@@ -18,3 +18,5 @@ ReactDom.render(
   ),
   document.getElementById('root')
 );
+render()
+store.subscribe(render);
