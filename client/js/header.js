@@ -28,6 +28,11 @@ const  Header = ()=>{
                 <Link to='/'>Home
                 </Link>
               </NavItem>
+              <NavItem className='ml-md-3'>
+                <Link to='/add_money'>
+                    Creditmoney
+                </Link>
+              </NavItem>
             </Nav>
         </Collapse>
       </Navbar>
