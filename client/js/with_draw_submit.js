@@ -6,7 +6,7 @@ const Div ={
   fontFamily: 'Kosugi sans-serif'
 };
 // component Add_money_submit
-class Add_money_submit extends React.Component{
+class With_money_submit extends React.Component{
   render(){
     return(
       <div style={Div}>
@@ -37,4 +37,4 @@ class Add_money_submit extends React.Component{
     );
   }
 }
-export default Add_money_submit
+export default With_money_submit

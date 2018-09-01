@@ -13,3 +13,11 @@ def data():
 @app.route('/create_account')
 def  create_account():
     return render_template('home.html')
+
+@app.route('/add_money_submit')
+def add_money_submit():
+    return render_template('home.html')
+
+@app.route('/withdraw_money')
+def withdraw_money():
+    return render_template('home.html')
