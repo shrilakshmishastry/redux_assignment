@@ -9,3 +9,7 @@ app.register_blueprint(add_money_blueprint)
 @app.route('/')
 def data():
     return render_template('home.html')
+
+@app.route('/create_account')
+def  create_account():
+    return render_template('home.html')

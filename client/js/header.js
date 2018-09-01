@@ -28,6 +28,10 @@ const  Header = ()=>{
                 <Link to='/'>Home
                 </Link>
               </NavItem>
+              <NavItem>
+                <Link to='/create_account' className="ml-md-3">Create-Account
+                </Link>
+              </NavItem>
               <NavItem className='ml-md-3'>
                 <Link to='/add_money'>
                     Creditmoney
