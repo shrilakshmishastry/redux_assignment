@@ -1,12 +1,18 @@
-import React,{Component} from 'react';
-import {Container,Row,Col,Input,InputGroup,Button,Form, FormGroup, Label,FormText} from 'reactstrap';
+import React,{Component,props} from 'react';
+import {Container,Row,Col,Input,InputGroup,Button,Form,FormGroup, Label,FormText} from 'reactstrap';
+import {store} from './store/index.js';
+import form_submit from './actions/form_submit.js';
+import {Control} from 'react-redux-form';
+
 require('./../images/landing1.png');
 const Div = {
     fontFamily: 'Kosugi sans-serif'
 };
 // component to Create_account
 class Create_account extends React.Component{
+
   render(){
+      console.log(store.getState().name);
     return(
       <div style={Div}>
       <Container className="mt-md-5">
@@ -16,11 +22,11 @@ class Create_account extends React.Component{
           </Col>
           <Col md={{size:6}} className="mt-3">
             <h2 className="mt-3 ml-5">Create your account</h2>
-            <Form>
+            <Form  onSubmit={handleSubmit}>
               <FormGroup>
               <InputGroup className="mt-5">
               <Input type='text' name='text'id='name' placeholder='Full name' required />
-                <Input type="password" name="password" id="password" placeholder="password" className="ml-md-3" required/>
+              <Input type="password" name="password" id="password" placeholder="password" className="ml-md-3"  required/>
               </InputGroup>
               <InputGroup>
                 <InputGroup className="mt-4">
@@ -43,4 +49,14 @@ class Create_account extends React.Component{
     );
   }
 }
+const handleSubmit = (event)=>{
+  event.preventDefault();
+  const value=event.target.elements;
+  console.log(value);
+  console.log(value[0].value);
+  console.log(event.target.elements[1].value);
+  console.log(event.target.elements[2].value);
+  store.dispatch(form_submit(value));
+}
+
 export default Create_account;
