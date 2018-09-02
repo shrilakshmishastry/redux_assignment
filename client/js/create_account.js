@@ -52,11 +52,11 @@ class Create_account extends React.Component{
 const handleSubmit = (event)=>{
   event.preventDefault();
   const value=event.target.elements;
-  console.log(value);
   console.log(value[0].value);
   console.log(event.target.elements[1].value);
   console.log(event.target.elements[2].value);
   store.dispatch(form_submit(value));
+  
 }
 
 export default Create_account;
