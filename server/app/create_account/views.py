@@ -24,6 +24,6 @@ def create_account():
             db.session.commit()
             return json.dumps({'value':'hello world'})
         else:
-            return redirect('http://127.0.0.1:5000/')
+            return json.dumps({'value':'already exist'})
 
     return render_template('home.html')

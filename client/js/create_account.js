@@ -15,10 +15,40 @@ const Div = {
 class Create_account extends React.Component{
 constructor(props){
   super(props);
-  this.display_push=this.display_push.bind(this);
+  this.handleSubmit=this.handleSubmit.bind(this);
 }
-display_push(){
-  this.props.history.push('/');
+handleSubmit (event){
+  event.preventDefault();
+  const value=event.target.elements;
+  console.log(value[0].value);
+  console.log(event.target.elements[1].value);
+  console.log(event.target.elements[2].value);
+  axios.post('/create_account',
+    {
+      value:{
+        name:value[0].value,
+        password:value[1].value,
+        mobile_num:value[2].value
+      }
+    }
+  )
+  .then(
+    response=>{
+      console.log( response.data.value);
+      if(response.data.value == 'already exist'){
+        console.log('hello world');
+        this.props.history.push('/');
+      }
+      else {
+        alert('successfully created account');
+        store.dispatch(form_submit(value));
+        this.props.history.push('/');
+      }
+    }
+  )
+
+
+
 }
   render(){
       console.log(store.getState());
@@ -31,7 +61,7 @@ display_push(){
           </Col>
           <Col md={{size:6}} className="mt-3">
             <h2 className="mt-3 ml-5">Create your account</h2>
-            <Form  onSubmit={handleSubmit}>
+            <Form  onSubmit={this.handleSubmit}>
               <FormGroup>
               <InputGroup className="mt-5">
               <Input type='text' name='text'id='name' placeholder='Full name' required />
@@ -58,36 +88,6 @@ display_push(){
     );
   }
 }
-const handleSubmit = (event)=>{
-  event.preventDefault();
-  const value=event.target.elements;
-  console.log(value[0].value);
-  console.log(event.target.elements[1].value);
-  console.log(event.target.elements[2].value);
-  axios.post('/create_account',
-    {
-      value:{
-        name:value[0].value,
-        password:value[1].value,
-        mobile_num:value[2].value
-      }
-    }
-  )
-  .then(
-    response=>{
-      console.log( response.data.value);
-      if(response.data.value == 'already exist'){
-        console.log('hello world');
-        this.props.history.push('/');
-      }
-      else {
-        alert('successfully created account');
-      }
-    }
-  )
 
-
-
-}
 
 export default Create_account;
