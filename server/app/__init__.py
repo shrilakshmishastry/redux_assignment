@@ -1,4 +1,4 @@
-from flask import Flask,render_template,Blueprint
+from flask import Flask,render_template,Blueprint,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 app=Flask(__name__,static_folder='../../client/dist',template_folder='../../client')

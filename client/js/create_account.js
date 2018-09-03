@@ -3,6 +3,9 @@ import {Container,Row,Col,Input,InputGroup,Button,Form,FormGroup, Label,FormText
 import {store} from './store/index.js';
 import form_submit from './actions/form_submit.js';
 import {Control} from 'react-redux-form';
+import axios from 'axios';
+import {browserHistory} from 'react-router';
+import {push} from 'react-router-redux';
 
 require('./../images/landing1.png');
 const Div = {
@@ -10,9 +13,15 @@ const Div = {
 };
 // component to Create_account
 class Create_account extends React.Component{
-
+constructor(props){
+  super(props);
+  this.display_push=this.display_push.bind(this);
+}
+display_push(){
+  this.props.history.push('/');
+}
   render(){
-      console.log(store.getState().name);
+      console.log(store.getState());
     return(
       <div style={Div}>
       <Container className="mt-md-5">
@@ -55,8 +64,30 @@ const handleSubmit = (event)=>{
   console.log(value[0].value);
   console.log(event.target.elements[1].value);
   console.log(event.target.elements[2].value);
-  store.dispatch(form_submit(value));
-  
+  axios.post('/create_account',
+    {
+      value:{
+        name:value[0].value,
+        password:value[1].value,
+        mobile_num:value[2].value
+      }
+    }
+  )
+  .then(
+    response=>{
+      console.log( response.data.value);
+      if(response.data.value == 'already exist'){
+        console.log('hello world');
+        this.props.history.push('/');
+      }
+      else {
+        alert('successfully created account');
+      }
+    }
+  )
+
+
+
 }
 
 export default Create_account;

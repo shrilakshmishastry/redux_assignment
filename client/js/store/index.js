@@ -6,7 +6,8 @@ const intialState =
   isOpen: false,
   name : '',
   password:'',
-  mobile_num:''
+  mobile_num:'',
+  balance:0
 }
 
 export const store = createStore(reducer,intialState);

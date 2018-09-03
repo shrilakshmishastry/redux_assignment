@@ -6,6 +6,7 @@ console.log(action.value);
       state.name=action.value.name;
       state.password=action.value.password;
       state.mobile_num=action.value.mobile_num;
+      state.balance=0;
     return state;
     case "CHECK":
       state.isOpen=action.isOpen;
