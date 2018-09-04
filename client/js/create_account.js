@@ -36,7 +36,7 @@ handleSubmit (event){
     response=>{
       console.log( response.data.value);
       if(response.data.value == 'already exist'){
-        console.log('hello world');
+        alert('your account exist');
         this.props.history.push('/');
       }
       else {

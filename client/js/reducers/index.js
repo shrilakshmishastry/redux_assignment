@@ -11,6 +11,12 @@ console.log(action.value);
     case "CHECK":
       state.isOpen=action.isOpen;
       return state;
+    case 'ADD_MONEY':
+    state.name=action.value.name;
+    state.password=action.value.password;
+    state.balance=action.value.balance;
+      return state;
+      break;
     default:
         return state;
   }

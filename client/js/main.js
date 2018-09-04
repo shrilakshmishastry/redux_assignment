@@ -11,9 +11,9 @@ class Main extends React.Component{
   render(){
     return(
       <Switch>
+        <Route path="/add_money_submit" component={Add_money_submit}/>
         <Route path='/add_money' component={Add_money}/>
         <Route path="/create_account" component={Create_account}/>
-        <Route path="/add_money_submit" component={Add_money_submit}/>
         <Route path="/withdraw_money" component={Withdraw_money}/>
         <Route path='/' component={Home}/>
       </Switch>
