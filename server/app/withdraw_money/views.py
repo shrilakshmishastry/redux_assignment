@@ -11,12 +11,11 @@ def withdraw_money():
         name=user['value']['name']
         password=user['value']['password']
         user_name=User_account.query.filter_by(full_name=name).first()
-        balance=user_name.balance
         user_password=User_account.query.filter_by(password=password).first()
         if((user_name or user_password)==None):
             return json.dumps({'status':'user not exist'})
         else :
-
+            balance=user_name.balance
             return json.dumps({'balance':balance,'name':name,'password':password})
 
     return render_template('home.html')

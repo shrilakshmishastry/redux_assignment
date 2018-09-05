@@ -6,11 +6,13 @@ import Create_account from './create_account.js';
 import Add_money_submit from './add_money_submit.js';
 import Withdraw_money from './with_draw.js';
 import With_money_submit from './with_draw_submit.js';
+import Balance_enquery from './balance_enquiery.js';
 // class  to Main component
 class Main extends React.Component{
   render(){
     return(
       <Switch>
+        <Route path='/balance' component={Balance_enquery}/>
         <Route path="/add_money_submit" component={Add_money_submit}/>
         <Route path='/withdraw_money_submit' component={With_money_submit}/>
         <Route path='/add_money' component={Add_money}/>

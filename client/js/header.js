@@ -42,6 +42,10 @@ const  Header = ()=>{
                     Withdraw money
                 </Link>
               </NavItem>
+            <NavItem className='ml-md-3'>
+              <Link to='/balance'>Balance
+              </Link>
+            </NavItem>
             </Nav>
         </Collapse>
       </Navbar>
