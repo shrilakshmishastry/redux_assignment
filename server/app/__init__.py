@@ -32,6 +32,48 @@ def data():
 
 
 @app.route('/add_money_submit',methods=['GET','POST'])
+def money_submit():
+    if request.method=='POST':
+        print(request.is_json)
+        data=request.get_json()
+        print(data)
+        name=data['value']['name']
+        password=data['value']['password']
+        print(name)
+        user = User_account.query.filter_by(full_name=name).first();
+        balance=data['value']['balance']
+        balance=int(balance)
+        print(type(balance))
+        print(type(user.balance))
+        balance=balance+user.balance
+        user.balance=balance
+        db.session.commit()
+        print(user.balance)
+        return json.dumps({'balance':balance,'name':name,'password':password})
+    return render_template('home.html')
+
+@app.route('/withdraw_money_submit',methods=['GET','POST'])
+def withdraw_money_submit():
+    if request.method=='POST':
+        print(request.is_json)
+        data=request.get_json()
+        print(data)
+        name=data['value']['name']
+        password=data['value']['password']
+        print(name)
+        user = User_account.query.filter_by(full_name=name).first();
+        balance=data['value']['balance']
+        balance=int(balance)
+        print(type(balance))
+        print(type(user.balance))
+        balance=user.balance-balance
+        user.balance=balance
+        db.session.commit()
+        print(user.balance)
+        return json.dumps({'balance':balance,'name':name,'password':password})
+    return render_template('home.html')
+
+@app.route('/add_money_submit',methods=['GET','POST'])
 def add_money_submit():
     if request.method=='POST':
         print(request.is_json)
