@@ -33,6 +33,7 @@ class With_money_submit extends React.Component{
     response=>{
       console.log(response.data);
         const value=response.data;
+        alert(balance+'has been withdrawn');
         store.dispatch(add_money_handle(value));
         this.props.history.push('/');
 

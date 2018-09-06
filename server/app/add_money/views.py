@@ -10,19 +10,20 @@ def add():
         user=request.get_json()
         name=user['value']['name']
         password=user['value']['password']
+        print(name)
+        print(password)
         user_name=User_account.query.filter_by(full_name=name).first()
         user_password=User_account.query.filter_by(password=password).first()
         print(user_name)
         data=(user_name) and (user_password)
         print(data)
-        none=None
-        print(type(none))
-        state=(data == None)
-        print(state)
-        if (state == True):
+        if (data == None):
+            print('hello world')
             return json.dumps({'status':'user not exist'})
+
         else:
             balance=user_name.balance
+            print('this is shrilakshmi')
             return json.dumps({'balance':balance,'name':name,'password':password})
 
         return ('hello world')

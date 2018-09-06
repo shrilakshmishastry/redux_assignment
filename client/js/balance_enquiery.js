@@ -27,9 +27,9 @@ class  Balance_enquery extends React.Component{
       response=>{
 
         console.log(response.data);
-        if (response.data == 'user not exist') {
+        if (response.data.status == 'user not exist') {
           alert('create your account');
-          this.props.history.push('/');
+          this.props.history.push('/create_account');
 
         }
         else {

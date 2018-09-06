@@ -29,12 +29,10 @@ class Add_money extends React.Component{
     })
     .then(
       response=>{
-
-        console.log(response.data);
-        if (response.data == 'user not exist') {
+        console.log(response.data.status);
+        if (response.data.status == 'user not exist') {
           alert('create your account');
-          this.props.history.push('/');
-
+          this.props.history.push('/create_account');
         }
         else {
             const value=response.data;
