@@ -45,6 +45,10 @@ def add_money_submit():
         balance=int(balance)
         print(type(balance))
         print(type(user.balance))
+        print(user.balance)
+        if (user.balance == None):
+            print('this is sky')
+            user.balance=0
         balance=balance+user.balance
         user.balance=balance
         db.session.commit()
@@ -66,6 +70,7 @@ def withdraw_money_submit():
         balance=int(balance)
         print(type(balance))
         print(type(user.balance))
+        if (user.balance == None or user.balance == 0):
         balance=user.balance-balance
         user.balance=balance
         db.session.commit()
