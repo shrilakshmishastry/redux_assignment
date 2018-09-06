@@ -33,11 +33,17 @@ class With_money_submit extends React.Component{
     response=>{
       console.log(response.data);
         const value=response.data;
-        alert(balance+'has been withdrawn');
-        store.dispatch(add_money_handle(value));
-        this.props.history.push('/');
-
-    }
+        console.log(response.data.status);
+        if (response.data.status == 'no money') {
+          alert('you dont have sufficient money');
+          this.props.history.push('/');
+        }
+        else {
+          alert(balance+'has been withdrawn');
+          store.dispatch(add_money_handle(value));
+          this.props.history.push('/');
+        }
+      }
   )
   }
   render(){

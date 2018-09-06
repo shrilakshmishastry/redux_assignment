@@ -68,14 +68,15 @@ def withdraw_money_submit():
         user = User_account.query.filter_by(full_name=name).first();
         balance=data['value']['balance']
         balance=int(balance)
-        print(type(balance))
-        print(type(user.balance))
-        if (user.balance == None or user.balance == 0):
-        balance=user.balance-balance
-        user.balance=balance
-        db.session.commit()
         print(user.balance)
-        return json.dumps({'balance':balance,'name':name,'password':password})
+        if(user.balance == 0 or user.balance == None or balance >user.balance ):
+            return json.dumps({'status':'no money'})
+        else:
+            balance=user.balance-balance
+            user.balance=balance
+            db.session.commit()
+            print(user.balance)
+            return json.dumps({'balance':balance,'name':name,'password':password})
     return render_template('home.html')
 
 @app.route('/balance',methods=['GET','POST'])

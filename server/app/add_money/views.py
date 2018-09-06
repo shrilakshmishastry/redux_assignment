@@ -23,6 +23,7 @@ def add():
 
         else:
             balance=user_name.balance
+            print(balance)
             print('this is shrilakshmi')
             return json.dumps({'balance':balance,'name':name,'password':password})
 
